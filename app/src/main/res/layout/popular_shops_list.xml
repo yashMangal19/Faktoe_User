@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/ProductCard"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="230dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shop_onboard_signin_background">
+
+        <ImageView
+            android:id="@+id/shopImg"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_marginHorizontal="15dp"
+            android:scaleType="fitXY"
+            app:circularflow_radiusInDP="20dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_launcher_background" />
+
+        <TextView
+            android:id="@+id/shopName"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Shop Name"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:fontFamily="@font/manjorant_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/shopImg" />
+
+        <TextView
+            android:id="@+id/shopAddr"
+            android:layout_width="185dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="8dp"
+            android:text="Shop Address/Location"
+            android:fontFamily="@font/manjorant_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/shopName" />
+
+       <!-- <RatingBar
+            android:id="@+id/shopRatingBar"
+            android:layout_width="148dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:numStars="3"
+            android:layout_marginTop="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/shopAddr"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/shopName"
+            app:layout_constraintVertical_bias="1.0" />-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

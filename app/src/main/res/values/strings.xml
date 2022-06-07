@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">FAKTOE_USER</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="todo">TODO</string>
+
+    <string name="UserState">com.example.faktoe_user.user_state</string>
+    <string name="UserDistrict">com.example.faktoe_user.user_district</string>
+    <string name="UserPhoneNumber">com.example.faktoe_user.user_shop_number</string>
+    <string name="UserId">com.example.faktoe_user.user_id</string>
+
+</resources>
