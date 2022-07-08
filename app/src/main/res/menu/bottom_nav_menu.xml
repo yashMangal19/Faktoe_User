@@ -38,9 +38,13 @@
         app:cnb_textColor="@color/blue"
 
        />
-   <!-- <item
-        android:id="@+id/settingIcon"
-        android:title="Settings"
-
-        android:iconTint="@color/blue"/>-->
+        <item
+            android:id="@+id/bottomNavOrders"
+            android:title="Orders"
+            android:icon="@drawable/ic_baseline_orders"
+            app:cnb_iconColor="@color/blue"
+            android:iconTint="@color/blue"
+            android:iconTintMode="multiply"
+            app:cnb_backgroundColor="@color/white"
+            app:cnb_textColor="@color/blue"/>
 </menu>

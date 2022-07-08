@@ -29,6 +29,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     public CategoryAdapter(Context context, List<CategoryModel> list) {
         this.list = list;
         this.context = context;
+        setHasStableIds(true);
     }
 
     @NonNull

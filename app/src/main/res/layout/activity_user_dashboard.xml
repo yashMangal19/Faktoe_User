@@ -43,6 +43,8 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_gravity="bottom"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
         android:background="@drawable/bottom_nav_background"
         app:cnb_iconSize="34dp"
         app:cnb_menuResource="@menu/bottom_nav_menu"

@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -30,18 +31,23 @@ import com.example.faktoe_user.models.CategoryModel;
 
 import com.example.faktoe_user.models.PopularShopsModel;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,10 +66,13 @@ public class    UserHomeFragment extends Fragment {
     PopularShopsAdapter popularShopsAdapter;
     List<PopularShopsModel> popularShopsModelList;
     // Firestore
-    FirebaseFirestore db;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private String UserState, UserCity, UserId, UserPhoneNumber;
     private SharedPreferences mPreferences;
+
+    private HashMap<String,String> CartMap = new HashMap<String,String>();
+    private ArrayList<String> CartProducts = new ArrayList<String>();
 
     View view;
 
@@ -88,31 +97,15 @@ public class    UserHomeFragment extends Fragment {
         UserPhoneNumber = mPreferences.getString(getString(R.string.UserPhoneNumber),"");
         UserId = mPreferences.getString(getString(R.string.UserId),"");
 
-        db = FirebaseFirestore.getInstance();
-        //myRef = FirebaseDatabase.getInstance().getReference("Shop");
-
-
-
         // Category
         catRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
         categoryModelList = new ArrayList<>();
         categoryAdapter = new CategoryAdapter(getContext(),categoryModelList);
 
-
-
-        /*LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-        llm.setOrientation(LinearLayoutManager.HORIZONTAL);
-        categoryModelList = new ArrayList<>();
-        categoryAdapter = new CategoryAdapter(getContext(),categoryModelList);
-        catRecyclerView.setLayoutManager(llm);
-        catRecyclerView.setAdapter(categoryAdapter);*/
-
         Log.d("myapp", "Rec. View Applied");
 
         // Popular Shops
         shopRecView.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL, false));
-        popularShopsModelList = new ArrayList<>();
-        popularShopsAdapter = new PopularShopsAdapter(getContext(), popularShopsModelList, communication);
         //shopRecView.setAdapter(popularShopsAdapter);
 
 
@@ -137,21 +130,20 @@ public class    UserHomeFragment extends Fragment {
                 });
 
         db.collection("Shop").document(UserState).collection(UserCity)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                PopularShopsModel popularShopsModel = document.toObject(PopularShopsModel.class);
-                                popularShopsModelList.add(popularShopsModel);
-                                popularShopsAdapter.notifyDataSetChanged();
-                            }
-                            shopRecView.setAdapter(popularShopsAdapter);
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        popularShopsModelList = new ArrayList<>();
+                        popularShopsAdapter = new PopularShopsAdapter(getContext(), popularShopsModelList, communication);
+                        for (QueryDocumentSnapshot document : value) {
+                            PopularShopsModel popularShopsModel = document.toObject(PopularShopsModel.class);
+                            popularShopsModelList.add(popularShopsModel);
+                            popularShopsAdapter.notifyDataSetChanged();
                         }
+                        shopRecView.setAdapter(popularShopsAdapter);
                     }
                 });
+
         return view;
     }
 

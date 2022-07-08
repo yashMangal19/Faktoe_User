@@ -5,14 +5,80 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:id="@+id/RecyclerView_Cart"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="1"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/ClearCartBtn"
         />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/CartSummaryView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/bottom_sheet_background"
+        android:paddingBottom="24dp">
+
+        <Button
+            android:id="@+id/BtnPreOrder"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:text="Pre-Order"
+            android:background="@drawable/shop_onboard_signup_background"
+            android:textColor="@color/white"
+            android:fontFamily="@font/majorant_medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textAllCaps="false"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="12dp" />
+
+        <TextView
+            android:id="@+id/TextTotalPriceTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Rs. "
+            android:fontFamily="@font/majorant_medium"
+            app:layout_constraintTop_toTopOf="@id/BtnPreOrder"
+            app:layout_constraintBottom_toBottomOf="@id/BtnPreOrder"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="32dp"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/TextTotalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="234"
+            android:fontFamily="@font/majorant_medium"
+            app:layout_constraintTop_toTopOf="@id/BtnPreOrder"
+            app:layout_constraintBottom_toBottomOf="@id/BtnPreOrder"
+            app:layout_constraintStart_toEndOf="@id/TextTotalPriceTag"
+            android:textSize="16sp"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/ClearCartBtn"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:text="Clear Cart"
+        android:textAllCaps="false"
+        android:background="@drawable/shop_onboard_signup_background"
+        android:fontFamily="@font/majorant_medium"
+        android:textColor="@color/white"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@id/CartSummaryView"
+        app:layout_constraintTop_toBottomOf="@id/RecyclerView_Cart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

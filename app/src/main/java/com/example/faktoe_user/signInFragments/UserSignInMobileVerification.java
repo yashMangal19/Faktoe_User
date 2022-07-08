@@ -155,7 +155,6 @@ public class UserSignInMobileVerification extends Fragment {
                                     @Override
                                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                                         if(!queryDocumentSnapshots.isEmpty()){
-                                            Log.d("000000","some");
                                             isRegistered = true;
                                             for(QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
                                                 Map<String,Object> mapObject = new HashMap<String,Object>();

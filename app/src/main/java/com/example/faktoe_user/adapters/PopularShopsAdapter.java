@@ -59,9 +59,6 @@ public class PopularShopsAdapter extends RecyclerView.Adapter<PopularShopsAdapte
             }
         });
 
-
-
-
     }
 
     @Override
@@ -74,7 +71,6 @@ public class PopularShopsAdapter extends RecyclerView.Adapter<PopularShopsAdapte
         ImageView signatureImage;
         TextView shopName, address;
         CardView productCard;
-        //RatingBar shoprating;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -83,8 +79,6 @@ public class PopularShopsAdapter extends RecyclerView.Adapter<PopularShopsAdapte
             shopName = itemView.findViewById(R.id.shopName);
             address = itemView.findViewById(R.id.shopAddr);
             productCard = itemView.findViewById(R.id.ProductCard);
-
-            //shoprating = itemView.findViewById(R.id.shopRatingBar);
         }
     }
 }

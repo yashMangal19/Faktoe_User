@@ -4,13 +4,14 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.Exclude;
 
 public class ProductModel {
-    private String Name, Description, Category, MRP, SellingPrice, Brand, Rating, ImageUrl,Id,ShopId;
+    private String Name, Description, Category, Brand, Rating, ImageUrl,Id,ShopId;
+    private long MRP, SellingPrice;
     private DocumentReference DocRef;
     public ProductModel(){
 
     }
 
-    public ProductModel(String name, String description, String category, String MRP, String sellingPrice, String brand, String rating, String ImageUrl, String Id,String ShopId) {
+    public ProductModel(String name, String description, String category, long MRP, long sellingPrice, String brand, String rating, String ImageUrl, String Id,String ShopId) {
         this.Name = name;
         this.Description = description;
         this.Category = category;
@@ -22,7 +23,6 @@ public class ProductModel {
         this.Id = Id;
         this.ShopId = ShopId;
     }
-
     @Exclude
     public DocumentReference getDocRef() {
         return DocRef;
@@ -30,6 +30,22 @@ public class ProductModel {
 
     public void setDocRef(DocumentReference docRef) {
         DocRef = docRef;
+    }
+
+    public long getMRP() {
+        return MRP;
+    }
+
+    public void setMRP(long MRP) {
+        this.MRP = MRP;
+    }
+
+    public long getSellingPrice() {
+        return SellingPrice;
+    }
+
+    public void setSellingPrice(long sellingPrice) {
+        SellingPrice = sellingPrice;
     }
 
     public String getId() {
@@ -78,22 +94,6 @@ public class ProductModel {
 
     public void setCategory(String category) {
         Category = category;
-    }
-
-    public String getMRP() {
-        return MRP;
-    }
-
-    public void setMRP(String MRP) {
-        this.MRP = MRP;
-    }
-
-    public String getSellingPrice() {
-        return SellingPrice;
-    }
-
-    public void setSellingPrice(String sellingPrice) {
-        SellingPrice = sellingPrice;
     }
 
     public String getBrand() {

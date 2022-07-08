@@ -1,12 +1,13 @@
 package com.example.faktoe_user.Cart;
 
 public class ProductCartModel {
-    private String Name, Description, Category, MRP, SellingPrice, Brand, Rating, ImageUrl, Id,ShopId;
+    private String Name, Description, Category, Brand, Rating, ImageUrl, Id,ShopId;
+    private long MRP, SellingPrice, count;
     public ProductCartModel(){
 
     }
 
-    public ProductCartModel(String name, String description, String category, String MRP, String sellingPrice, String brand, String rating, String ImageUrl, String Id, String ShopId) {
+    public ProductCartModel(String name, String description, String category, long MRP, long sellingPrice, String brand, String rating, String ImageUrl, String Id, String ShopId, long count) {
         this.Name = name;
         this.Description = description;
         this.Category = category;
@@ -17,6 +18,31 @@ public class ProductCartModel {
         this.ImageUrl = ImageUrl;
         this.Id = Id;
         this.ShopId = ShopId;
+        this.count = count;
+    }
+
+    public long getCount() {
+        return count;
+    }
+
+    public void setCount(long count) {
+        this.count = count;
+    }
+
+    public long getMRP() {
+        return MRP;
+    }
+
+    public void setMRP(long MRP) {
+        this.MRP = MRP;
+    }
+
+    public long getSellingPrice() {
+        return SellingPrice;
+    }
+
+    public void setSellingPrice(long sellingPrice) {
+        SellingPrice = sellingPrice;
     }
 
     public String getShopId() {
@@ -65,22 +91,6 @@ public class ProductCartModel {
 
     public void setCategory(String category) {
         Category = category;
-    }
-
-    public String getMRP() {
-        return MRP;
-    }
-
-    public void setMRP(String MRP) {
-        this.MRP = MRP;
-    }
-
-    public String getSellingPrice() {
-        return SellingPrice;
-    }
-
-    public void setSellingPrice(String sellingPrice) {
-        SellingPrice = sellingPrice;
     }
 
     public String getBrand() {
