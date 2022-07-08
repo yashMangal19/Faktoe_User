@@ -6,5 +6,6 @@
 This application is not complete yet. ( User ratings anf filters are remaining ).</br></br>
 
 This app is made using native android development ( Java ) and Firebase is used for mobile authentication and Firebase Firestore for database.
+
 https://user-images.githubusercontent.com/97595765/178024109-ceb26143-baae-48fd-a570-913776e14682.mp4
 
